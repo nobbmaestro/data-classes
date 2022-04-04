@@ -25,7 +25,7 @@ Write a program to encrypt plaintext into ciphertext using the Caesar cipher. He
  'v': 'y', 'y': 'a', 'x': ' ', 'z': 'b'} <br>
  (The order of the key-value pairs may be different.) <br>
  """ 
- ### YOUR CODE GOES HERE<br>
+ <!--  ### YOUR CODE GOES HERE --><br>
 
   
 > def build_encoder(shift): <br>
@@ -50,7 +50,7 @@ Write a program to encrypt plaintext into ciphertext using the Caesar cipher. He
  (The order of the key-value pairs may be different.) <br>
  HINT : Use build_coder. <br>
  """ <br>
- ### YOUR CODE GOES HERE<br>
+ <!--  ### YOUR CODE GOES HERE --><br>
 
   
 > def build_decoder(shift): <br>
@@ -77,7 +77,7 @@ you <br>
  (The order of the key-value pairs may be different.) <br>
  HINT : Use build_coder. <br>
  """ <br>
- ### YOUR CODE GOES HERE<br>
+ <!--  ### YOUR CODE GOES HERE --><br>
 
   
 > def apply_coder(text, coder): <br>
@@ -92,7 +92,7 @@ you <br>
  >>> apply_coder("Khoor,czruog!", build_decoder(3)) <br>
  'Hello, world!' <br>
  """ <br>
-  ### YOUR CODE GOES HERE<br>
+ <!--  ### YOUR CODE GOES HERE --><br>
 
   
 > def apply_shift(text, shift): <br>
@@ -110,7 +110,7 @@ you <br>
  >>> apply_shift('This is a test.', 8) <br>
  'Apq hq hiham a.' <br>
  """ <br>
- ### YOUR CODE GOES HERE<br>
+ <!--  ### YOUR CODE GOES HERE --><br>
 
 ## Resources
 

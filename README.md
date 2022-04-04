@@ -4,7 +4,7 @@
 
  - Module 1 - [String manipulation and formatting](dataClasses/libs/module1/README.md)
  - Module 2 - [Linked Lists](dataClasses/libs/module2/README.md)
- - Module 3 - Hash tables
+ - Module 3 - [Hash tables](dataClasses/libs/module3/README.md)
  - Module 4 - Stacks
  - Module 5 - Queues
  - Module 6 - Recursion
