@@ -33,16 +33,16 @@ class TestFiniteQueue(unittest.TestCase):
             # First 5 values shall be enqueued
             if i < 5:
                 self.assertEqual(self.queue.enqueue(i), True)
-            # For 6th value and above, TypeError shall be raised
+            # For 6th value and above, IndexError shall be raised
             else:
-                self.assertRaises(ValueError, self.queue.enqueue, i)
+                self.assertRaises(IndexError, self.queue.enqueue, i)
 
         # First value to dequeue shall be 0
         self.assertEqual(self.queue.peek(), 0)
         self.assertEqual(self.queue.get_size(), 5)
 
-        # Try to enqueue additional value, it shall raise ValueError 
-        self.assertRaises(ValueError, self.queue.enqueue, 100)
+        # Try to enqueue additional value, it shall raise IndexError 
+        self.assertRaises(IndexError, self.queue.enqueue, 100)
 
         # Dequeue shall return 0 and reduce the size to 4
         self.assertEqual(self.queue.dequeue(), 0)
@@ -72,8 +72,8 @@ class TestFiniteQueue(unittest.TestCase):
         self.assertEqual(self.queue.dequeue(), 101) 
         self.assertEqual(self.queue.get_size(), 0)
 
-        # Dequeue shall raise ValueError
-        self.assertRaises(ValueError, self.queue.dequeue) 
+        # Dequeue shall raise IndexError
+        self.assertRaises(IndexError, self.queue.dequeue) 
 
 class TestInfiniteQueue(unittest.TestCase):
     def setUp(self):
@@ -112,5 +112,5 @@ class TestInfiniteQueue(unittest.TestCase):
             self.assertEqual(self.queue.dequeue(), i)
             self.assertEqual(self.queue.get_size(), j-i)
 
-        # Dequeue shall raise ValueError
-        self.assertRaises(ValueError, self.queue.dequeue) 
+        # Dequeue shall raise IndexError
+        self.assertRaises(IndexError, self.queue.dequeue) 

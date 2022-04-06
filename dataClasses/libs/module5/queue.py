@@ -14,14 +14,14 @@ class Queue(object):
 
     def enqueue(self, data):
         if self.full():
-            raise ValueError('Queue out of space')
+            raise IndexError('queue out of space')
         else:
             self.queue.append(data)
             return True
 
     def dequeue(self):
         if self.get_size() == 0:
-            raise ValueError("Nothing to dequeue")
+            raise IndexError("dequeue from empty queue")
 
         else:
             return self.queue.pop(0)
