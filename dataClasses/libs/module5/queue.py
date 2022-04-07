@@ -9,11 +9,11 @@ class Queue(object):
     def get_size(self):
         return len(self.queue)
 
-    def full(self):
+    def is_full(self):
         return len(self.queue) == self.maxsize
 
     def enqueue(self, data):
-        if self.full():
+        if self.is_full():
             raise IndexError('queue out of space')
         else:
             self.queue.append(data)

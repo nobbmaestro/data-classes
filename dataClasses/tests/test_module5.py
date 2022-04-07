@@ -1,6 +1,88 @@
 import unittest
 
 from dataClasses.libs.module5.queue import Queue
+from dataClasses.libs.module5.myCircularQueue import MyCircularQueue
+
+class TestMyCircularQueue(unittest.TestCase):
+    def setUp(self):
+        # set up emtry MyCircularQueue
+        self.test_object_empty = MyCircularQueue(3)
+
+        # set up full MyCircularQueue
+        self.test_object_full = MyCircularQueue(3)
+        self.test_object_full.enqueue('1st')
+        self.test_object_full.enqueue('2nd')
+        self.test_object_full.enqueue('3rd')
+
+        # set up test from example
+        self.cmd = {
+            0: "MyCircularQueue", 
+            1: "enqueue", 
+            2: "enqueue", 
+            3: "enqueue", 
+            4: "enqueue", 
+            5: "rear", 
+            6: "is_full", 
+            7: "dequeue", 
+            8: "enqueue", 
+            9: "rear"
+        }
+        self.input = {
+            0: 3, 
+            1: 1, 
+            2: 2, 
+            3: 3, 
+            4: 4, 
+            5: "", 
+            6: "", 
+            7: "", 
+            8: 4, 
+            9: ""
+        }
+        self.output = {
+            0: None, 
+            1: True, 
+            2: True, 
+            3: True, 
+            4: False, 
+            5: 3, 
+            6: True, 
+            7: True, 
+            8: True, 
+            9: 4
+        }
+
+    def test_method_front(self):
+        self.assertEqual(self.test_object_empty.front(), -1)
+        self.assertEqual(self.test_object_full.front(), '1st')
+
+    def test_method_rear(self):
+        self.assertEqual(self.test_object_empty.rear(), -1)
+        self.assertEqual(self.test_object_full.rear(), '3rd')
+
+    def test_method_enqueue(self):
+        self.assertEqual(self.test_object_empty.enqueue('New data'), True)
+        self.assertEqual(self.test_object_full.enqueue('New data'), False)
+
+    def test_method_dequeue(self):
+        self.assertEqual(self.test_object_empty.dequeue(), False)
+        self.assertEqual(self.test_object_full.dequeue(), True)
+
+    def test_method_is_empty(self):
+        self.assertEqual(self.test_object_empty.is_full(), False)
+        self.assertEqual(self.test_object_full.is_full(), True)
+
+    def test_method_is_full(self):
+        self.assertEqual(self.test_object_empty.is_empty(), True)
+        self.assertEqual(self.test_object_full.is_empty(), False)
+
+    def test_lifecycle(self):
+        to_eval = "test_object.{cmd}({input})"
+        for i in range(9):
+            if i == 0:
+                test_object = eval(self.cmd[i] + "(" + str(self.input[i]) + ")")
+            else:
+                self.assertEqual(eval(to_eval.format(cmd=self.cmd[i], input=self.input[i])), self.output[i])
 
 class TestFiniteQueue(unittest.TestCase):
     def setUp(self):
@@ -20,9 +102,8 @@ class TestFiniteQueue(unittest.TestCase):
         self.assertEqual(self.test_object.dequeue(), 0)
 
     def test_contains(self):
-        #self.assertEqual(self.test_object.contains(0), False)
-        #self.assertEqual(self.test_object.contains(1), True)
-        pass
+        self.assertEqual(self.test_object.contains(0), True)
+        self.assertEqual(self.test_object.contains(1), False)
 
     def test_lifecycle(self):
         # Create an queue of len 5
@@ -36,6 +117,7 @@ class TestFiniteQueue(unittest.TestCase):
             # For 6th value and above, IndexError shall be raised
             else:
                 self.assertRaises(IndexError, self.queue.enqueue, i)
+                self.assertEqual(self.queue.is_full(), True)
 
         # First value to dequeue shall be 0
         self.assertEqual(self.queue.peek(), 0)
@@ -93,9 +175,9 @@ class TestInfiniteQueue(unittest.TestCase):
         self.assertEqual(self.test_object.dequeue(), 0)
 
     def test_contains(self):
-        #self.assertEqual(self.test_object.contains(0), False)
-        #self.assertEqual(self.test_object.contains(1), True)
-        pass
+        self.assertEqual(self.test_object.contains(0), True)
+        self.assertEqual(self.test_object.contains(1), False)
+        
 
     def test_lifecycle(self):
         # Create an queue of len 5
